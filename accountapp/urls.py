@@ -15,3 +15,4 @@ urlpatterns = [
 
     path('create/', AccountCreateView.as_view(), name='create')
 ]
+
