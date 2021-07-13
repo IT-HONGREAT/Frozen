@@ -10,7 +10,7 @@ from django.views.generic import CreateView
 from accountapp.models import HelloWorld
 
 
-def hello_world(request):   #라우팅을 해줘야함
+def hello_world(request):   #라우팅을 해줘야함.
     if request.method == "POST":
 
         temp = request.POST.get('hello_world_input')
