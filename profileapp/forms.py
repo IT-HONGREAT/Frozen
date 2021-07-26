@@ -8,4 +8,4 @@ class ProfileCreationForm(ModelForm):
         model = Profile
 
         fields = ['image','nickname','message']
-        
+
