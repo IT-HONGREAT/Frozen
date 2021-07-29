@@ -32,18 +32,18 @@
         {%  if user == target_user %}
         <div>
 
-            <a href="{% url 'accountapp:update' pk=target_user.pk %}">
-                Update Info
+            <a href="{% url 'accountapp:update' pk=target_user.pk %}"
+                class="material-icons round_button mx-2" >
+                settings
+            </a>
+
+            <a href="{% url 'accountapp:delete' pk=target_user.pk %}"
+                class="material-icons round_button mx-2">
+                close
             </a>
 
         </div>
-        <div>
 
-            <a href="{% url 'accountapp:delete' pk=target_user.pk %}">
-                Quit
-            </a>
-
-        </div>
         {% endif  %}
 
     </div>
