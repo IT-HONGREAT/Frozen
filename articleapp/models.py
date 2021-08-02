@@ -4,7 +4,7 @@ from django.db import models
 # Create your models here.
 
 
-class Ariticle(models.Model):
+class Article(models.Model):
     writer = models.ForeignKey(User, on_delete=models.SET_NULL,
                                related_name='article',
                                null=True)
