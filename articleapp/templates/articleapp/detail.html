@@ -3,7 +3,6 @@
 {% block content %}
 
 
-
     <div class="container">
 
         <div>
@@ -17,11 +16,14 @@
             {#  게시글, 대표이미지, 글내용     #}
             <img src="{{ target_article.image.url }}" alt="">
             {{ target_article.content }}
+            <div>
+                <a href="{% url 'articleapp:update' pk=target_article.pk %}"
+                    class="btn btn-success rounded-pill px-5">
+                    Update
+                </a>
+            </div>
         </div>
     </div>
-
-
-
 
 
 {% endblock %}
