@@ -6,12 +6,12 @@
     <style>
         .container div {
             width: 280px;
-            background-color: antiquewhite;
+            box-shadow: 0 0 .5rem grey;
             display: flex;
             justify-content: center;
             align-items: center;
             border-radius: 1rem;
-            flex-direction: column;
+                flex-direction: column;
         }
 
         .container img {
@@ -31,7 +31,7 @@
                     <img src="{{ article.image.url }}"
                          alt="">
                 </a>
-
+                <span class="m-2 NNS_B">{{ article.title }}</span>
 
             </div>
         {% endfor %}
