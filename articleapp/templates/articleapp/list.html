@@ -5,13 +5,13 @@
 
     <style>
         .container div {
-          width: 280px;
-          background-color: antiquewhite;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          border-radius: 1rem;
-            flex-direction: column ;
+            width: 280px;
+            background-color: antiquewhite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 1rem;
+            flex-direction: column;
         }
 
         .container img {
@@ -26,18 +26,29 @@
 
         {% for article in article_list %}
 
-        <div>
-            <a href="{% url 'articleapp:detail' pk=article.pk%}">
-                <img src="{{ article.image.url }}"
-                   alt="">
-            </a>
+            <div>
+                <a href="{% url 'articleapp:detail' pk=article.pk %}">
+                    <img src="{{ article.image.url }}"
+                         alt="">
+                </a>
 
 
-        </div>
+            </div>
         {% endfor %}
     </div>
 
     <script src="{% static 'js/magicgrid.js' %}"></script>
 
+    <div class="text-center">
+        <a href="{% url 'articleapp:create' %}"
+           class="btn btn-dark rounded-pill material-icons">
+            brush
+        </a>
+        <a href="{% url 'articleapp:create' %}"
+           class="btn btn-outline-dark rounded-pill px-5">
+            Create Article
+        </a>
+
+    </div>
 
 {% endblock %}
