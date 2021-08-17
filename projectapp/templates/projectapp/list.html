@@ -10,8 +10,7 @@
         }
 
         .container div {
-            width: 45%;
-                max-width: 250px;
+
                 box-shadow: 0 0 .5rem grey;
             display: flex;
             justify-content: center;
@@ -21,7 +20,9 @@
         }
 
         .container img {
-            width: 100%;
+            width: 7rem;
+            height: 7rem;
+            object-fit: cover;
             border-radius: 1rem;
         }
 
@@ -48,7 +49,7 @@
     {% include 'snippets/pagination.html' %}
 
     <div class="text-center my-5">
-        <a href="{% url 'profileapp:create' %}"
+        <a href="{% url 'projectapp:create' %}"
            class="btn btn-outline-dark rounded-pill px-5">
             Create Project
         </a>
