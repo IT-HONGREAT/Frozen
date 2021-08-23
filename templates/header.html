@@ -1,13 +1,9 @@
-<div style = 'text-align: center;'>
+<div style="text-align: center">
 
-    <div class = "pragmatic_header_logo">
-
+    <div class="pragmatic_header_logo">
         <h1>Pragmatic</h1>
-
     </div>
-
-    <div class = "pragmatic_header_button">
-
+    <div class="pragmatic_header_button">
         <span>
             <a href="{% url 'articleapp:list' %}">
                 Articles
@@ -18,43 +14,35 @@
                 Projects
             </a>
         </span>
+        <span>
+            <a href="{% url 'subscribeapp:list' %}">
+                Subscription
+            </a>
+        </span>
 
-
-        {% if not user.is_authenticated %}
-
-
+        {% if not user.is_authenticated  %}
         <span>
             <a href="{% url 'accountapp:login' %}">
                 Login
             </a>
         </span>
-
         <span>
             <a href="{% url 'accountapp:create' %}">
-                Sign up
+                SignUp
             </a>
         </span>
-
-
         {% else %}
         <span>
             <a href="{% url 'accountapp:detail' pk=user.pk %}">
                 Mypage
             </a>
-
         </span>
-
-
         <span>
             <a href="{% url 'accountapp:logout' %}">
                 Logout
             </a>
-
         </span>
         {% endif %}
-
-
     </div>
-
 
 </div>
