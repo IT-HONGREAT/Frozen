@@ -1,5 +1,7 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.core.exceptions import ValidationError
+from django.db import transaction
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
@@ -11,6 +13,20 @@ from django.views.generic import RedirectView
 from articleapp.models import Article
 from likeapp.models import LikeRecord
 
+@transaction.atomic
+def db_transation(user,article):
+
+    like_record = LikeRecord.objects.filter(user=user,
+                                            article=article)
+    if like_record.exists():
+        raise ValidationError('like already exists')
+    else:
+        LikeRecord(user=user, article=article).save()
+    article.like += 1
+    article.save()
+
+
+
 
 @method_decorator(login_required, 'get')
 class LikeArticleView(RedirectView):
@@ -19,19 +35,17 @@ class LikeArticleView(RedirectView):
         user = request.user
         article = Article.objects.get(pk=kwargs['article_pk'])
 
-        like_record = LikeRecord.objects.filter(user=user,
-                                                article=article)
-        if like_record.exists():
-            # 좋아요가 반영X
+        try:
+            db_transation(user, article)
+            #좋아요 반영O
+            messages.add_message(request, messages.SUCCESS, '좋아요가 반영되었습니다.')
+        except ValidationError:
+            #좋아요 반영X
             messages.add_message(request, messages.ERROR, '좋아요는 한번만 가능합니다.')
             return HttpResponseRedirect(reverse('articleapp:detail',
-                                                kwargs={'pk':kwargs['article_pk']}))
-        else:
-            LikeRecord(user=user, article=article).save()
-        article.like += 1
-        article.save()
-        # 좋아요가 반영O
-        messages.add_message(request, messages.SUCCESS, '좋아요가 반영되었습니다.')
+                                                kwargs={'pk': kwargs['article_pk']}))
+
+
         return super().get(request, *args, **kwargs)
 
     def get_redirect_url(self, *args, **kwargs):
