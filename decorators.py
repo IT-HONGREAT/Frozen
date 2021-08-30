@@ -8,7 +8,6 @@ def decorator(func):
 
     return decorated
 
-@decorator
 def hello_world():
 
     print('Hello World!')
