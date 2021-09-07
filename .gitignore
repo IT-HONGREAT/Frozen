@@ -85,3 +85,8 @@ __pycache__/
 media/
 
 staticfiles/
+
+hongreat.pem
+
+hongreat_gcp
+hongreat_gcp.pub
