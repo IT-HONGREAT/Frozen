@@ -91,5 +91,3 @@ hongreat.pem
 hongreat_gcp
 hongreat_gcp.pub
 
-Dockerfile
-nginx.conf
