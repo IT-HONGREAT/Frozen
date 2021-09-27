@@ -20,6 +20,8 @@ services:
     volumes:
       - hongreat_static:/home/gis_djangoclass_1/staticfiles
       - hongreat_media:/home/gis_djangoclass_1/media
+    secrets:
+      - DJANGO_SECRET_KEY
 
   mariadb:
     image: mariadb:10.5
@@ -40,4 +42,8 @@ networks:
 volumes:
   hongreat_static:
   hongreat_media:
-  hongreat_mariadb: 
+  hongreat_mariadb:
+
+secrets:
+  DJANGO_SECRET_KEY:
+    external: true
