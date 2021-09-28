@@ -9,7 +9,7 @@ services:
     networks:
       - hongreat_network
     volumes:
-      - /home/ubuntu/nginx.conf:/etc/nginx.nginx.conf
+      - /home/ubuntu/nginx.conf:/etc/nginx/nginx.conf
       - hongreat_static:/data/static
       - hongreat_media:/data/media
 
