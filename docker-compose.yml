@@ -14,7 +14,7 @@ services:
       - hongreat_media:/data/media
 
   django:
-    image: hongreat:4
+    image: hongreat:5
     networks:
       - hongreat_network
     volumes:
