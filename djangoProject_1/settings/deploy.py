@@ -1,5 +1,5 @@
 from .base import *
-
+import dj_database_url
 
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
@@ -22,15 +22,15 @@ ALLOWED_HOSTS = ['*']
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 #
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'django',
-#         'USER': read_secret('MARIADB_USER'),
-#         'PASSWORD': read_secret('MARIADB_PASSWORD'),
-#         'HOST': 'mariadb',
-#         'PORT': '3306',
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'django',
+        'USER': read_secret('MARIADB_USER'),
+        'PASSWORD': read_secret('MARIADB_PASSWORD'),
+        'HOST': 'mariadb',
+        'PORT': '3306',
+    }
+}
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
